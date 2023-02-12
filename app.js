@@ -20,13 +20,13 @@ async function sendEmail(name,id) {
 
   // send mail with defined transport object
   let info = await transporter.sendMail({
-    from: 'info@iamyourstory.in', // sender address
+    from: '"ImUrs" <info@iamyourstory.in>', // sender address
     to: id, 
     subject: "Order processed at I Am Your Story", 
-    text: "Dear " + name.split(" ")[0] + " ,\n\nThank you for placing an order with us. Your order has been successfully processed.\n\nYou will receive an email within next 6 hours for updating the key ingredients of your Valentines Magazine Edition i.e. your narratives and images.\n\nThankyou for choosing ImUrs. We won’t disappoint you!\n\nCheers\nImUrs - I Am Your Story", 
+    text: "Dear " + name.split(" ")[0] + ",\n\nThank you for placing an order with us. Your order has been successfully processed.\n\nYou will receive an email within next 6 hours for updating the key ingredients of your Valentines Magazine Edition i.e. your narratives and images.\n\nThankyou for choosing ImUrs. We won’t disappoint you!\n\nCheers\nImUrs - I Am Your Story", 
   });
 
-  console.log("Message sent: %s", info.messageId);
+  //console.log("Message sent: %s", info.messageId);
 }
 
 app = express();
