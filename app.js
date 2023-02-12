@@ -5,32 +5,29 @@ var drive = require('./drive');
 
 var nodemailer = require('nodemailer');
 
-function sendEmail(userEmail){
-    var transporter = nodemailer.createTransport({
-        service: 'gmail',
-        auth: {
-          user: 'shivanshmitra53@gmail.com',
-          pass: 'hello9877'
-        }
-      });
-      var mailOptions = {
-        from: 'mitrashivansh47@gmail.com',
-        to: 'myfriend@yahoo.com',
-        subject: 'Sending Email using Node.js',
-        text: 'Dear Customer, Thank you for placing an order with us. Your order has been successfully processed.You will receive an email within next 12 hours for updating the key ingredients of your Valentines Magazine Edition i.e. your narratives and images.Thankyou for choosing ImUrs. We won’t disappoint you! Cheers ImUrs - I Am Your Story'
-      };
+async function sendEmail(name,id) {
+  // create reusable transporter object using the default SMTP transport
+  let transporter = nodemailer.createTransport({
+    host: "smtpout.secureserver.net",
+    port: 587,
+    secure: false, // true for 465, false for other ports
+    auth: {
+      user: "info@iamyourstory.in", // generated ethereal user
+      pass: "ImUrs1402$" // generated ethereal password
+    },
+    timeout: 10000
+  });
 
-      transporter.sendMail(mailOptions, function(error, info){
-        if (error) {
-          console.log(error);
-        } else {
-          //console.log('Email sent: ' + info.response);
-        }
-      });      
+  // send mail with defined transport object
+  let info = await transporter.sendMail({
+    from: 'info@iamyourstory.in', // sender address
+    to: id, 
+    subject: "Order processed at I Am Your Story", 
+    text: "Dear " + name.split(" ")[0] + " ,\n\nThank you for placing an order with us. Your order has been successfully processed.\n\nYou will receive an email within next 6 hours for updating the key ingredients of your Valentines Magazine Edition i.e. your narratives and images.\n\nThankyou for choosing ImUrs. We won’t disappoint you!\n\nCheers\nImUrs - I Am Your Story", 
+  });
+
+  console.log("Message sent: %s", info.messageId);
 }
-
-
-
 
 app = express();
 app.use(bodyParser.json()); 
@@ -64,11 +61,21 @@ app.post('/reciveOrder',function(req,res){
       nd = dataa.data + '\n' + req.body.name+ ' ,' +  req.body.phone+ ' ,' + req.body.email + ' ,' +  req.body.gender+ ' ,' +  req.body.town + ' ,' + data;
       drive.updateFile(landeduserfile,nd);
       drive.createFile(req.body.name,req.body.phone,req.body.email,req.body.town,req.body.pg,data);
+      try{
+        sendEmail(req.body.name,req.body.email);
+      }
+      catch(e){
+        console.log(e);
+      }
     });
   });
-
-
-
 })
+
+app.get('/valentines', function(req,res){
+    res.sendFile( __dirname + "/views" + "/landing.html" );
+});
+app.get('/thankYou', function(req,res){
+    res.sendFile( __dirname + "/views/thankyou.html" );
+  });
 
 app.listen(process.env.PORT || 5000);
