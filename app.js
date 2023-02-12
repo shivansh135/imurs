@@ -74,7 +74,7 @@ app.post('/reciveOrder',function(req,res){
 app.get('/valentines', function(req,res){
     res.sendFile( __dirname + "/views" + "/landing.html" );
 });
-app.get('/thankYou', function(req,res){
+app.get('/thankyou', function(req,res){
     res.sendFile( __dirname + "/views/thankyou.html" );
   });
 
