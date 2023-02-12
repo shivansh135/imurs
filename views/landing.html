@@ -79,7 +79,7 @@
          
       </div>
       <div style="text-align: center;margin: auto;margin-top:20px;margin-bottom: 21px">
-         <div style="position: relative;font-family: 'Raleway';font-weight: 900;font-size: 36px;line-height: 42px;color: #F5F3F4;">This Valentine's,</div>
+         <div style="position: relative;font-family: 'Roboto';font-weight: 900;font-size: 36px;line-height: 42px;color: #F5F3F4;">This Valentine's,</div>
          <div style="position: relative;font-family: 'Raleway';font-weight: 500;font-size: 25px;line-height: 38px;color: #F5F3F4;">Let's Go Beyond Materialism</div>
       </div>
       <div>
@@ -141,6 +141,17 @@
          font-size: 36px;
          line-height: 48px;padding: 20px;">
          <div style="margin-bottom: 20px;">How it works?</div>
+         <!--<div style="width: 100%;margin: auto;border-radius: 4px;overflow: hidden;margin-bottom: 20px;" id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+            <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+               <div class="carousel-inner">
+                  <div class="carousel-item active" data-bs-interval="10000"><img style="background-color: #f5f3f4;" src="/public/imgs/glimp1.jpeg" class="d-block w-100" alt="..."></div>
+                  <div class="carousel-item" data-bs-interval="2000"><img style="background-color: #f5f3f4;" src="/public/imgs/glimp2.jpeg" class="d-block w-100" alt="..."></div>
+                  <div class="carousel-item"><img style=" background-color: #f5f3f4;" src="/public/imgs/glimp3.jpeg" class="d-block w-100" alt="..."></div>
+                  <div class="carousel-item"><img style=" background-color: #f5f3f4;" src="/public/imgs/glimp4.jpeg" class="d-block w-100" alt="..."></div>
+                  <div class="carousel-item"><img style=" background-color: #f5f3f4;" src="/public/imgs/glimp5.jpeg" class="d-block w-100" alt="..."></div>
+               </div>
+            </div>
+         </div>-->
          <div style="width: 100%;border: 2px dashed white;border-radius: 20px;font-family: 'Raleway';
             font-style: normal;
             font-weight: 400;
@@ -169,7 +180,7 @@
             <form class="form-floating" style="color: #ababab">
                 <div class="input-group mb-3">
                     <div class="form-floating">
-                      <input style="background-color: transparent;color: #232333;" type="text" class="form-control" id="name" placeholder="Username" required>
+                      <input style="background-color: transparent;color: #232333;text-transform: capitalize;" type="text" class="form-control" id="name" placeholder="Username" required>
                       <label for="floatingInputGroup1">Full Name *</label>
                     </div>
                   </div>
@@ -452,12 +463,13 @@
                                "email": email,
                                "pg": pg   })
         })
-        document.getElementById('basic-form').style.marginLeft = "0px";
+         document.getElementById('basic-form').style.marginLeft = "0px";
          name=document.getElementById('name').value = "";
          phone=document.getElementById('phone').value = "";
          gender=document.getElementById('gender').value = "";
          town=document.getElementById('town').value = "";
          email=document.getElementById('email').value = "";
+         window.location.href = '/thankYou';
       }
       function scrollToForm(){
           document.getElementById('Form').scrollIntoView({
