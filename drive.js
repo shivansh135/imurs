@@ -3,6 +3,8 @@
  * @return{obj} data file
  * */
 
+const fs = require('fs');
+
 const OPENAI_API_KEY = "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";
 
 async function searchFile() {
@@ -129,7 +131,7 @@ async function downloadFile(realFileId) {
     }
   }
 
-  async function createFolder(username,phone) {
+  async function createFolder(username,phone,Parent) {
     const {GoogleAuth} = require('google-auth-library');
     const {google} = require('googleapis');
   
@@ -139,9 +141,9 @@ async function downloadFile(realFileId) {
   });
     const service = google.drive({version: 'v3', auth});
     const fileMetadata = {
-      name: username+' '+phone.toString(),
+      name: username + phone,
       mimeType: 'application/vnd.google-apps.folder',
-      parents: ['1gQ8dFtDYe3mvSFlaX0qp1oPNoffjrct0'],
+      parents: [Parent],
     };
     try {
       const file = await service.files.create({
@@ -165,7 +167,7 @@ async function downloadFile(realFileId) {
     });
     const service = google.drive({version: 'v3', auth});
     const fileMetadata = {
-      name: 'info',
+      name: name,
       mimeType: 'text/plain',
       parents: [Parent],
     };
@@ -185,8 +187,89 @@ async function downloadFile(realFileId) {
       console.error(err);
     }
   }
+
+  async function createUserInputs(name, data, Parent) {
+    const {GoogleAuth} = require('google-auth-library');
+    const {google} = require('googleapis');
+  
+    const auth = new GoogleAuth({
+      keyFile: './credentials.json',
+      scopes: 'https://www.googleapis.com/auth/drive',
+    });
+    const service = google.drive({version: 'v3', auth});
+    const fileMetadata = {
+      name: name,
+      mimeType: 'text/plain',
+      parents: [Parent],
+    };
+    const content = data;
+    const media = {
+      mimeType: 'text/plain',
+      body: content,
+    };
+    
+    try {
+      const file = await service.files.create({
+        resource: fileMetadata,
+        media: media,
+      });
+      console.log(`File created: ${file.data.name} (${file.data.id})`);
+    } catch (err) {
+      console.error(err);
+    }
+  }
+
+  async function uploadImagesToDrive(imgs, parentFolderId) {
+    const { GoogleAuth } = require('google-auth-library');
+    const { google } = require('googleapis');
+    const auth = new GoogleAuth({
+      keyFile: './credentials.json',
+      scopes: 'https://www.googleapis.com/auth/drive',
+    });
+  
+    const drive = google.drive({ version: 'v3', auth });
+  
+    const imageIds = [];
+  
+    console.log('Number of images:', Object.keys(imgs).length);
+  
+    for (const key in imgs) {
+      const img = imgs[key][0];
+      console.log('Image path:', img.path);
+  
+      const fileMetadata = {
+        name: img.originalname,
+        parents: [parentFolderId],
+      };
+  
+      const media = {
+        mimeType: img.mimetype,
+        body: fs.createReadStream(img.path),
+      };
+  
+      try {
+        const response = await drive.files.create({
+          requestBody: fileMetadata,
+          media: media,
+          fields: 'id',
+        });
+  
+        console.log('Uploaded file:', response.data.id);
+  
+        imageIds.push(response.data.id);
+      } catch (err) {
+        console.error(err);
+      } finally {
+        fs.unlinkSync(img.path); // delete the uploaded file from the server
+      }
+    }
+  
+    return imageIds;
+  }
+  
+  
   
 
-  module.exports = { searchFile, downloadFile, searchFiles, updateFile, createFolder, createFile};
+  module.exports = { uploadImagesToDrive, createUserInputs,searchFile, downloadFile, searchFiles, updateFile, createFolder, createFile};
 
   //app.listen(process.env.PORT || 8000);
