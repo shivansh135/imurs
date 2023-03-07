@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            margin: 0;
+             background-color: #9D34DA;
+        }
+        .heading{
+            position: relative;
+            font-family: 'Playfair Display';
+            font-style: normal;
+            font-weight: 900;
+            font-size: 29.2965px;
+            line-height: 29px;
+            text-align: center;
+            color: #F5F5F5;
+            margin: 10px;
+        }
+        .para{
+            position: relative;
+            font-family: 'Montserrat';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 12.5281px;
+            line-height: 15px;
+            text-align: center;
+            color: #F5F5F5;
+            width: 50%;
+            margin: auto;
+            margin-bottom: 20px;
+        }
+        .form{
+            width: 60%;
+            margin: auto;
+            display: flex;
+            flex-direction: column;
+        }
+        .input{
+            position: relative;
+            background-color: #ffffff3d;
+            color: #F5F5F5;
+            outline: none;
+            border: none;
+            margin: 10px;
+            padding: 10px;
+            border-radius: 20px;
+            font-family: 'Montserrat';
+        }
+        ::placeholder{
+            color: #F5F5F5;
+            font-family: 'Montserrat';
+            opacity: 0.6;
+        }
+        .submit{
+            width: 194.29px;
+            height: 35.55px;
+            background: #1A1A1A;
+            border-bottom: 0.189334px solid #484848;
+            border-radius: 6.05869px;
+            color: #f5f5f5;
+            margin: auto;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="photog" id="photog">
+
+    </div>
+    <div class="heading">
+        Let's Start
+    </div>
+    <div class="para">
+        The first step for eternalizing your memories. Please introduce yourself to us and then we will talk about your memories.
+    </div>
+    <div class="form" method="post" action = "/submitOrder">
+        <input type="text" placeholder="name" class="input" id="name">
+        <input type="text" placeholder="wedding date" id="date" class="input" onclick="this.type = 'date'">
+        <input type="tel" placeholder="phone" id="phone" class="input">
+        <input type="email" placeholder="email" id="email" class="input">
+        <button class="submit" onclick="submit()">Submit</button>
+    </div>
+</body>
+<script>
+    function setName(){
+        document.getElementById("photog").innerHTML = p_name.replace("-"," ");
+    }
+    function submit(){
+       var name=document.getElementById('name').value;
+       var phone=document.getElementById('phone').value;
+       var date=document.getElementById('date').value;
+       //var town=document.getElementById('town').value;
+       //var pg = (document.getElementById('12pg').checked ? 'pg12':'pg16');
+       var email=document.getElementById('email').value;
+       fetch('/reciveOrderByPG', {
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ "name": name,
+                               "phone": phone,
+                               "date": date,
+                               "email": email,
+                               "pg": "16" ,
+                               "photog": p_name.replace("-"," ")})
+        })
+         window.location.href = '/thankyou';
+    }
+</script>
+</html>

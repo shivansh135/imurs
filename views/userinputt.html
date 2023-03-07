@@ -1,0 +1,361 @@
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <meta name="theme-color" content="#000000">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Dosis:wght@200;400&family=Homemade+Apple&family=Inter+Tight:wght@100&family=Montserrat:wght@100&family=Noto+Serif+JP:wght@200&family=Playfair+Display&family=Quicksand:wght@300&family=Raleway:wght@300&family=Roboto:wght@100;300;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Dosis:wght@200;400&family=Homemade+Apple&family=Inter+Tight:wght@100&family=Montserrat:wght@100&family=Noto+Serif+JP:wght@200&family=Playfair+Display&family=Quicksand:wght@300&family=Roboto:wght@100;300;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <style>
+
+        textarea{
+            height: 30px;
+            resize:vertical;
+            font-size:12px ;
+            background-color: transparent;
+            box-sizing: border-box;
+      width: 100%;
+      border: 0.216667px solid #4D4166;
+      border-radius: 4.33333px;margin-top: 7px;
+        }
+        textarea:focus{
+            outline: 1px solid #4d5d7d;
+        }
+        .question{
+          font-family: 'Raleway';
+      font-style: normal;
+      font-weight: 500;
+      font-size: 12.4px;
+      line-height: 14px;
+      letter-spacing: 0.025em;
+      color: #4D4166;
+      flex: none;
+      order: 0;
+      flex-grow: 0;
+      margin-top: 10px; width: 100%;
+    }
+div.spinner {
+  display: none;
+  position: relative;
+  width: 54px;
+  height: 54px;
+  display: inline-block;
+  background: transparent;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+div.spinner div {
+  width: 6%;
+  height: 16%;
+  background: #FFF;
+  position: absolute;
+  left: 49%;
+  top: 43%;
+  opacity: 0;
+  -webkit-border-radius: 50px;
+  -webkit-box-shadow: 0 0 3px rgba(0,0,0,0.2);
+  -webkit-animation: fade 1s linear infinite;
+}
+
+@-webkit-keyframes fade {
+  from {opacity: 1;}
+  to {opacity: 0.25;}
+}
+
+div.spinner div.bar1 {
+  -webkit-transform:rotate(0deg) translate(0, -130%);
+  -webkit-animation-delay: 0s;
+}    
+
+div.spinner div.bar2 {
+  -webkit-transform:rotate(30deg) translate(0, -130%); 
+  -webkit-animation-delay: -0.9167s;
+}
+
+div.spinner div.bar3 {
+  -webkit-transform:rotate(60deg) translate(0, -130%); 
+  -webkit-animation-delay: -0.833s;
+}
+div.spinner div.bar4 {
+  -webkit-transform:rotate(90deg) translate(0, -130%); 
+  -webkit-animation-delay: -0.7497s;
+}
+div.spinner div.bar5 {
+  -webkit-transform:rotate(120deg) translate(0, -130%); 
+  -webkit-animation-delay: -0.667s;
+}
+div.spinner div.bar6 {
+  -webkit-transform:rotate(150deg) translate(0, -130%); 
+  -webkit-animation-delay: -0.5837s;
+}
+div.spinner div.bar7 {
+  -webkit-transform:rotate(180deg) translate(0, -130%); 
+  -webkit-animation-delay: -0.5s;
+}
+div.spinner div.bar8 {
+  -webkit-transform:rotate(210deg) translate(0, -130%); 
+  -webkit-animation-delay: -0.4167s;
+}
+div.spinner div.bar9 {
+  -webkit-transform:rotate(240deg) translate(0, -130%); 
+  -webkit-animation-delay: -0.333s;
+}
+div.spinner div.bar10 {
+  -webkit-transform:rotate(270deg) translate(0, -130%); 
+  -webkit-animation-delay: -0.2497s;
+}
+div.spinner div.bar11 {
+  -webkit-transform:rotate(300deg) translate(0, -130%); 
+  -webkit-animation-delay: -0.167s;
+}
+div.spinner div.bar12 {
+  -webkit-transform:rotate(330deg) translate(0, -130%); 
+  -webkit-animation-delay: -0.0833s;
+}
+
+
+    </style>
+
+</head>
+  <body>
+    <div style="display: flex;
+                flex-direction: row;
+                align-items: center;
+                padding: 10px 10px 10px 15px;
+                width: 100%;
+                height: 46.57px;
+                background: #5D4D7D;
+                flex: none;
+                order: 0;
+                flex-grow: 0;font-family: 'Roboto';
+                font-style: normal;
+                font-weight: 700;
+                font-size: 16px;
+                line-height: 14px;
+                color: #F5F5F5;">
+                I Am Your Story
+    </div>
+    <div id="body">
+      <div style="width: 360px;margin: auto;margin-top: 20px;margin-bottom: 20px;">
+        <div style="font-family: 'Roboto';
+                        font-style: normal;
+                        font-weight: 700;
+                        font-size: 20.743px;
+                        line-height: 28px;
+                        letter-spacing: 0.025em;
+                        text-transform: capitalize;
+                        color: #4D4166;"><span id="name">Ansh</span>'s Wedding Edition - 2023
+        </div>
+        <div style="font-family: 'Raleway';
+                    font-style: normal;
+                    font-weight: 500;
+                    font-size: 13px;
+                    line-height: 28px;
+                    /* identical to box height, or 213% */
+                    color: #9C9C9C;
+                    letter-spacing: 0.025em;margin-top: -8px;
+                    ">Abstracts and snapshots input</div>
+    </div>
+    <div style="display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 17.3333px 21.6667px 30.3333px;
+                gap: 9.53px;
+                width: 360px;
+                background: #F5F5F5;
+                border-radius: 6.5px;
+                margin: auto;
+                position: relative;
+                ">
+                <!--<div style="position: absolute;background-color: #9C9C9C66;width: 100%;height: 100%;margin: -17.3333px -21.6667px -30.3333px;border-radius: 6.5px;filter: blur(0.5);;display: flex;">
+                  <div class="loader"></div>
+                </div>-->
+        <div style="display: flex;width: 100%;">
+        <div style="
+        font-family: 'Raleway';
+        font-style: normal;
+        font-weight: 600;
+        font-size: 19.0667px;
+        line-height: 22px;
+
+        color: #4D4166;
+
+
+        /* Inside auto layout */
+
+        flex: none;
+        order: 0;
+        flex-grow: 0;" id="question_head">Relationship Ignition</div> 
+        <input type="file" id = "imgs" name="imgs" style="display: none;" accept="image/*" multiple>
+        <label for="imgs" style="margin-left: auto;"> <img src="/public/imgs/photo-uplode.svg" style="width: 40px;margin-left: auto;border-left: 1px solid black;padding-left: 10px;" alt="">        </label>
+        </div>
+        <div id="question_display" style="display: flex;flex-direction: column;align-items: flex-start;
+                    padding: 6.5px 13px;gap: 2.17px;width: 100%;
+                    border: 0.866667px dashed #4D4166;
+                    border-radius: 6.5px;">
+          <div class="question">How you both got introduced to each other.</div>
+          <textarea ></textarea>
+          <div class="question">How things wrapped into relationship & who made the first move.</div>
+          <textarea ></textarea>
+          <div class="question">Any characteristic of him/her you got attracted to or any special memory you wish to put forward.</div>
+          <textarea ></textarea>
+    </div>
+    </div>
+    <div style="width: 360px;
+    font-family: 'Raleway';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 11px;
+    margin: auto;
+    line-height: 15px;color: #9C9C9C;margin-top: 20px;">Please upload only that pictures which represents<br> the onset of your relationship.</div>
+    </div>
+
+    <div  onclick="next(curr_q,prod_id);curr_q++;" style="display: flex;
+    padding: 7px 20px;
+    gap: 10px;
+    width: 100px;
+    height: 70px;
+    margin: auto;
+    background: #5D4D7D;
+    border-radius: 10px;
+    font-family: 'Raleway';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 28px;
+    /* identical to box height, or 230% */
+    letter-spacing: 0.025em;color: #F5F5F5;margin-top: 15px;" id="proceed-but">
+      <div style="margin: auto;">Proceed</div>
+    </div>
+
+    <div style="width: 22px;
+    height: 15px;
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 15px;
+    /* identical to box height, or 107% */
+    margin: auto;
+    letter-spacing: 0.025em;
+    margin-top: 15px;
+    color: #9C9C9C;" id="pengunation">1/8</div>
+    </div>
+
+    <script>
+      var curr_q = 1;
+      var prod_id = 2;
+      async function next(curr_q,prod_id){
+        document.getElementById("body").style.pointerEvents = "none";
+        document.getElementById("body").style.opacity = "0.7";
+        document.getElementById("proceed-but").innerHTML = "<div class='spinner'><div class='bar1'></div><div class='bar2'></div><div class='bar3'></div><div class='bar4'></div><div class='bar5'></div><div class='bar6'></div><div class='bar7'></div><div class='bar8'></div><div class='bar9'></div><div class='bar10'></div><div class='bar11'></div><div class='bar12'></div></div>";
+        var ans = "";
+
+        var texts = document.getElementsByTagName('textarea');
+        for (let i = 0; i < texts.length; i++) {
+          ans = ans + texts[i].value + '<br><br>';
+        }
+
+
+        const fileInput = document.getElementById('imgs');
+
+// Create a new FormData object
+const formData = new FormData();
+
+// Append each file to the FormData object with a unique key
+for (let i = 0; i < fileInput.files.length; i++) {
+  formData.append(`image${i}`, fileInput.files[i]);
+}
+
+// Append other data to the FormData object
+formData.append('prod_id', prod_id);
+formData.append('curr_q', curr_q);
+formData.append('ans', ans);
+
+// Create a new XMLHttpRequest object
+const xhr = new XMLHttpRequest();
+
+// Set the onprogress handler to update the progress bar
+xhr.upload.onprogress = (event) => {
+  const progressBar = document.getElementById('progress-bar');
+  const progress = Math.round((event.loaded / event.total) * 100);
+  var r = document.querySelector(':root');
+  if(progress>15){
+    r.style.setProperty('--percent', `${progress-12}%`);
+    //progressBar.innerText = `${progress-12}`;
+  }
+};
+
+// Set the onload handler to handle the response
+xhr.onload = (event) => {
+  const response = JSON.parse(event.target.responseText);
+  if(response.head == "EOQs"){
+    window.location.href = '/getleads/'+prod_id;
+  }
+  else{
+  document.getElementById("body").style.opacity = "1";
+  document.getElementById("body").style.pointerEvents = "all";
+  document.getElementById("proceed-but").innerHTML = "<div style='margin: auto;''>Proceed</div>"
+  document.getElementById('question_display').innerHTML = "";
+            document.getElementById('imgs').value = "";
+            document.getElementById('question_head').innerHTML = response.head;
+            var arrayQues = response.questions.split('\n');
+            arrayQues.forEach(data => {
+              var q = document.createElement('div');
+              q.className = "question";
+              q.innerHTML = data;
+              var intext = document.createElement('textarea');
+              document.getElementById('question_display').appendChild(q);
+              document.getElementById('question_display').appendChild(intext);
+              document.getElementById('pengunation').innerHTML = (curr_q+1) +'/8';
+            });
+  }
+};
+
+// Set the onerror handler to handle errors
+xhr.onerror = (event) => {
+  console.error(event.target.statusText);
+};
+
+// Send the request
+xhr.open('POST', '/updateNextQuestion');
+xhr.send(formData);
+
+      }
+      
+      function setQuestion(ques,namee){
+        document.getElementById('question_display').innerHTML = "";
+            document.getElementById('question_head').innerHTML = ques.head;
+            document.getElementById('name').innerHTML = namee.split(" ")[0];
+            var arrayQues = ques.questions.split('\n');
+            arrayQues.forEach(data => {
+              var q = document.createElement('div');
+              q.className = "question";
+              q.innerHTML = data;
+              var intext = document.createElement('textarea');
+              document.getElementById('question_display').appendChild(q);
+              document.getElementById('question_display').appendChild(intext);
+              document.getElementById('pengunation').innerHTML = (curr_q) +'/8';
+            })
+      }
+      document.getElementById("imgs").addEventListener("change",()=>{
+        const input = document.getElementById("imgs");
+        const count = input.files.length;
+        if (count > 5) {
+          alert("You can only upload a maximum of 5 files");
+          input.value = "";
+        }
+      })
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+  </body>
+</html> 
